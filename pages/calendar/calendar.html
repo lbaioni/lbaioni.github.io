@@ -1,0 +1,369 @@
+<html>
+
+<head>
+    <title>CyberGuide Suite - Calendar</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="../../js/constants.js"></script>
+    <script src="../../js/util.js"></script>
+    <script src="../../js/http-request.js"></script>
+    <script src="../../js/api.js"></script>
+    <script src="../../js/script.js"></script>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - -->
+    <link rel="stylesheet" href="./calendar.css">
+    <script src="./calendar.js"></script>
+</head>
+
+<body>
+    <div class="container-full bg-black">
+        <div class="calendar-box bg-grey-3 color-grey">
+            <!-- SELECT Mese compilazione -->
+            <div class="selection-area month">
+                <div class="label-for-field">Mese di riferimento:</div>
+                <select id="month" onchange="onChooseMonth()">
+                    <option value="" disabled selected hidden>Seleziona un mese</option>
+                </select>
+            </div>
+            <!-- Calendario -->
+            <div class="calendar hidden" id="calendar-area">
+                <div class="calendar-header-row">
+                    <div class="calendar-header-cell">
+                        <div class="cell-box"> LUN </div>
+                    </div>
+                    <div class="calendar-header-cell">
+                        <div class="cell-box"> MAR </div>
+                    </div>
+                    <div class="calendar-header-cell">
+                        <div class="cell-box"> MER </div>
+                    </div>
+                    <div class="calendar-header-cell">
+                        <div class="cell-box"> GIO </div>
+                    </div>
+                    <div class="calendar-header-cell">
+                        <div class="cell-box"> VEN </div>
+                    </div>
+                    <div class="calendar-header-cell">
+                        <div class="cell-box"> SAB </div>
+                    </div>
+                    <div class="calendar-header-cell">
+                        <div class="cell-box"> DOM </div>
+                    </div>
+                </div>
+                <div class="calendar-row">
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-1">
+                            <div id="cal-cell-1-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-1-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-2">
+                            <div id="cal-cell-2-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-2-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-3">
+                            <div id="cal-cell-3-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-3-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-4">
+                            <div id="cal-cell-4-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-4-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-5">
+                            <div id="cal-cell-5-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-5-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-6">
+                            <div id="cal-cell-6-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-6-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-7">
+                            <div id="cal-cell-7-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-7-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calendar-row">
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-8">
+                            <div id="cal-cell-8-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-8-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-9">
+                            <div id="cal-cell-9-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-9-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-10">
+                            <div id="cal-cell-10-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-10-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-11">
+                            <div id="cal-cell-11-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-11-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-12">
+                            <div id="cal-cell-12-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-12-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-13">
+                            <div id="cal-cell-13-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-13-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-14">
+                            <div id="cal-cell-14-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-14-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calendar-row">
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-15">
+                            <div id="cal-cell-15-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-15-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-16">
+                            <div id="cal-cell-16-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-16-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-17">
+                            <div id="cal-cell-17-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-17-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-18">
+                            <div id="cal-cell-18-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-18-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-19">
+                            <div id="cal-cell-19-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-19-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-20">
+                            <div id="cal-cell-20-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-20-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-21">
+                            <div id="cal-cell-21-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-21-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calendar-row">
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-22">
+                            <div id="cal-cell-22-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-22-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-23">
+                            <div id="cal-cell-23-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-23-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-24">
+                            <div id="cal-cell-24-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-24-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-25">
+                            <div id="cal-cell-25-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-25-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-26">
+                            <div id="cal-cell-26-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-26-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-27">
+                            <div id="cal-cell-27-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-27-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-28">
+                            <div id="cal-cell-28-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-28-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calendar-row">
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-29">
+                            <div id="cal-cell-29-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-29-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-30">
+                            <div id="cal-cell-30-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-30-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-31">
+                            <div id="cal-cell-31-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-31-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-32">
+                            <div id="cal-cell-32-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-32-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-33">
+                            <div id="cal-cell-33-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-33-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-34">
+                            <div id="cal-cell-34-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-34-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-35">
+                            <div id="cal-cell-35-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-35-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="calendar-row">
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-36">
+                            <div id="cal-cell-36-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-36-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-37">
+                            <div id="cal-cell-37-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-37-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-38">
+                            <div id="cal-cell-38-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-38-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-39">
+                            <div id="cal-cell-39-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-39-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-40">
+                            <div id="cal-cell-40-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-40-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-41">
+                            <div id="cal-cell-41-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-41-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                    <div class="calendar-cell">
+                        <div class="cell-box" id="cal-cell-42">
+                            <div id="cal-cell-42-day" class="cal-cell-day"></div>
+                            <div id="cal-cell-42-desc" class="cal-cell-desc"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-box bg-grey-3 color-grey">
+            <!-- SELECT Commessa -->
+            <div class="selection-area commission" id="commission-area">
+                <div class="label-for-field">Commessa di riferimento:</div>
+                <select id="commission" disabled>
+                    <option value="" disabled selected hidden>Seleziona una commessa</option>
+                </select>
+            </div>
+            <!-- Selezione oraria singola o multipla -->
+            <div class="selection-area time-selection-mode">
+                <label for="time-selection-mode-cb" class="label-for-field">Consuntivazione multipla </label>
+                <label class="switch">
+                    <input id="time-selection-mode-cb" type="checkbox" checked
+                        onclick="onTimeSelectionModeChecked(this)">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <!-- Orari Timbratura Mattina -->
+            <div class="selection-area no-padding time" id="start-hours">
+                <div class="label-for-field">Orario entrata:</div>
+                <input type="text" class="time" id="morning-start-hh" placeholder="HH" />
+                <input type="text" class="time" id="morning-start-mm" placeholder="MM" />
+            </div>
+            <div class="selection-area no-padding time" id="end-hours">
+                <div class="label-for-field">Orario uscita:</div>
+                <input type="text" class="time" id="morning-end-hh" placeholder="HH" />
+                <input type="text" class="time" id="morning-end-mm" placeholder="MM" />
+            </div>
+            <!-- Orari Timbratura Pomeriggio -->
+            <div class="selection-area no-padding time" id="start-launch">
+                <div class="label-for-field">Orario entrata:</div>
+                <input type="text" class="time" id="afternoon-start-hh" placeholder="HH" />
+                <input type="text" class="time" id="afternoon-start-mm" placeholder="MM" />
+            </div>
+            <div class="selection-area time no-padding time" id="end-launch">
+                <div class="label-for-field">Orario uscita:</div>
+                <input type="text" class="time" id="afternoon-end-hh" placeholder="HH" />
+                <input type="text" class="time" id="afternoon-end-mm" placeholder="MM" />
+            </div>
+            <div class="selection-area time">
+                <!-- SEPARATOR -->
+            </div>
+            <button type="button" class="bg-grey-2 margin-bottom" onclick="clean()"> PULISCI PARZIALE
+            </button>
+            <button type="button" class="bg-grey-2 margin-bottom" onclick="onConfermaParziale()"> CONFERMA PARZIALE
+            </button>
+            <button type="button" class="bg-grey-2" onclick="onSalva()"> SALVA SU <span
+                    class="cyberguide-text">CYBERGUIDE</span> </button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+div.login-box {
+    width: 20rem;
+    padding: 2rem;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-left: -10rem;
+    border-radius: 0.2rem;
+    box-shadow: .3rem .3rem rgb(0 0 0 / 20%);
+}
+
+div.login-box div.title {
+    font-size: 2rem;
+    letter-spacing: .2rem;
+    text-align: center;
+}
+
+div.login-box div.subtitle {
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+div.login-box div.subtitle span.cyberguide-text {
+    color: #a90000;
+    font-weight: bold;
+}
+
+div.form-field {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+div.form-field::after {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    font-family: monospace;
+    transition: all .05s ease-in-out;
+}
+
+div.form-field.suff-majorbit-mail::after {
+    content: '@majorbit.com';
+    color: #353535;
+}

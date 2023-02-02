@@ -1,0 +1,135 @@
+html,
+body {
+    margin: 0;
+    color: #353535;
+}
+
+div.container {
+    width: 100%;
+}
+
+div.container-full {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+input[type=text],
+input[type=password],
+input[type=number],
+select,
+button {
+    width: 100%;
+    padding: .8rem;
+    border: 0;
+    border-radius: .2rem;
+    box-shadow: .1rem .2rem rgb(0 0 0 / 10%);
+    outline: none;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+input[type=text],
+input[type=password],
+input[type=number] {
+    margin: 0 0 .5rem;
+}
+
+button,
+select {
+    cursor: pointer;
+}
+
+button {
+    letter-spacing: .05rem;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: .8rem;
+}
+
+.label-for-field {
+    padding-bottom: 0.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.bg-black {
+    background-color: #353535;
+}
+
+.bg-white {
+    background-color: #FFFFFF;
+}
+
+.bg-grey {
+    background-color: #D2D7DF;
+}
+
+.bg-grey-2 {
+    background-color: #BDBBB0;
+}
+
+.bg-grey-3 {
+    background-color: #8A897C;
+}
+
+.color-black {
+    color: #353535;
+}
+
+.color-white {
+    color: #FFFFFF;
+}
+
+.color-grey {
+    color: #D2D7DF;
+}
+
+.color-grey-2 {
+    color: #BDBBB0;
+}
+
+.color-grey-3 {
+    color: #8A897C;
+}
+
+/* Toast */
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: calc(50% - 18rem);
+    width: 30rem;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    z-index: 1000;
+    border-radius: 0.3rem;
+    opacity: 0;
+    transition: .4s;
+    font-family: monospace;
+    padding: 0.8rem 3rem;
+}
+
+.toast.visible {
+    opacity: 1;
+}
+
+.toast.success {
+    background: #337733;
+    color: #fff;
+}
+
+.toast.error {
+    background: #903010;
+    color: #fff;
+}
+
+.toast.info {
+    background: #686868;
+    color: #fff;
+}

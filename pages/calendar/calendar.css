@@ -1,0 +1,195 @@
+div.calendar-box {
+    width: 24rem;
+    padding: 2rem;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-left: -24.5rem;
+    border-radius: 0.2rem;
+    box-shadow: .3rem .3rem rgb(0 0 0 / 20%);
+}
+
+div.info-box {
+    width: 16rem;
+    padding: 2rem;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-left: 4.5rem;
+    border-radius: 0.2rem;
+    box-shadow: .3rem .3rem rgb(0 0 0 / 20%);
+}
+
+input.time {
+    width: 3rem;
+}
+
+div.selection-area {
+    padding-bottom: 1rem;
+}
+
+div.selection-area.time {
+    display: inline-block;
+    width: 48%;
+}
+
+div.selection-area.no-padding {
+    padding-bottom: 0;
+}
+
+div.calendar.hidden {
+    display: none;
+}
+
+div.calendar {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    padding: .1rem;
+}
+
+div.calendar-row,
+div.calendar-header-row {
+    display: table-row;
+}
+
+div.calendar .calendar-cell,
+div.calendar .calendar-header-cell {
+    display: table-cell;
+    padding: .1rem;
+    text-align: center;
+}
+
+div.calendar .calendar-cell .cell-box,
+div.calendar .calendar-header-cell .cell-box {
+    height: 3rem;
+    position: relative;
+    background: #BDBBB0;
+    font-size: .8rem;
+    font-family: system-ui;
+    cursor: pointer;
+}
+
+div.calendar .calendar-header-cell .cell-box {
+    line-height: 3rem;
+    background: #686868;
+    cursor: default;
+}
+
+div.calendar .calendar-cell .cell-box.working-day,
+div.calendar .calendar-cell .cell-box.not-working-day {
+    font-weight: bold;
+}
+
+div.calendar .cell-box.selected-day {
+    background: rgb(0 128 0 / 20%);
+}
+
+div.calendar .cell-box.out-day {
+    background: #95958D;
+    cursor: default;
+}
+
+div.calendar .cell-box.over-today {
+    cursor: not-allowed;
+}
+
+div.calendar .cell-box.not-working-day {
+    color: #a90000;
+}
+
+.margin-bottom {
+    margin-bottom: .5rem;
+}
+
+.cell-box .cal-cell-day {
+    position: absolute;
+    top: 0.2rem;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.cell-box .cal-cell-desc {
+    position: absolute;
+    bottom: .2rem;
+    width: 100%;
+    font-size: .6rem;
+    color: #353535;
+}
+
+.cell-box .cal-cell-desc.new {
+    color: #388820;
+}
+
+div.info-box span.cyberguide-text {
+    color: #a90000;
+}
+
+div.time-selection-mode {
+    text-align: right;
+}
+
+div.time-selection-mode label.label-for-field {
+    line-height: 22px;
+    text-transform: uppercase;
+    font-size: .65rem;
+    color: #686868;
+    font-weight: bold;
+    margin-right: 0.3rem;
+    cursor: pointer;
+}
+
+div.selection-area.time.hidden {
+    display: none;
+}
+
+/* Toggle Button */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    vertical-align: top;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #BDBBB0;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #BDBBB0;
+    transition: .4s;
+}
+
+input:checked+.slider:before {
+    background-color: #686868;
+}
+
+.slider.round {
+    border-radius: 50%;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
