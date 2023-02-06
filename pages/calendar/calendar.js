@@ -141,14 +141,12 @@ const buildCalendar = () => {
         lastDay.setDate(lastDay.getDate() + 7);
     }
 
-    // TODO: aggiungere controllo che non sia una data futura
-
     let currentDate = new Date(Util.clone(firstDay));
     while (currentDate <= lastDay) {
         // Controllo che non sia sabato, domenica o festivo
         const isWorkingDay = (dt) => dt.getDay() != 0 && dt.getDay() != 6 && !festivita.includes(dt.getDate());
         const isEnabled = (dt) => (dt.getMonth() + 1) == month;
-        const isOverToday = (dt) => Number(month) === new Date().getMonth() + 1 && dt.getDate() > new Date().getDate();
+        const isOverToday = (dt) => Number(month) === (new Date().getMonth() + 1) && dt.getDate() > new Date().getDate();
         calendarValues.push({
             day: currentDate.getDate(),
             workingDay: isWorkingDay(currentDate),
@@ -220,8 +218,12 @@ const onConfermaParziale = () => {
         return;
     }
 
-    // Controllo che la commessa sia attiva per tutto il periodo selezionato
-    // TODO: Implementare controllo
+    if (isMeseConsolidato) {
+        ToastService.showErrorMessage('Non puoi applicare nuovi timbri su di un mese consolidato');
+        return;
+    }
+
+    // TODO: Implementare controllo che la commessa sia attiva per tutto il periodo selezionato
 
     const totOreLavorate = timesDiffBetweenDates(buildDate(1, 1, morningStartHH, morningStartMM), buildDate(1, 1, morningEndHH, morningEndMM))
         + (isConsuntivazioneMultipla ? timesDiffBetweenDates(buildDate(1, 1, afternoonStartHH, afternoonStartMM), buildDate(1, 1, afternoonEndHH, afternoonEndMM)) : 0);
@@ -319,6 +321,11 @@ const getTimbrature = () => {
 }
 
 const onSalva = () => {
+    if (isMeseConsolidato) {
+        ToastService.showErrorMessage('Non puoi applicare nuovi timbri su di un mese consolidato');
+        return;
+    }
+
     ToastService.showInfoMessage('Timbratura in corso...');
 
     const httpRequests = MultipleHttpRequest.build();
