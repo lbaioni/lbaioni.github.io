@@ -143,6 +143,25 @@ div.selection-area.time.hidden {
     display: none;
 }
 
+div.selection-area.month {
+    position: relative;
+}
+
+div.selection-area.month div.label-for-field {
+    display: inline-block;
+}
+
+div.label-for-field#month-status {
+    text-transform: uppercase;
+    font-size: .6rem;
+    position: absolute;
+    top: 2.4rem;
+    right: 2rem;
+    color: #a31b1b;
+    font-weight: bold;
+    cursor: default;
+}
+
 /* Toggle Button */
 
 .switch {

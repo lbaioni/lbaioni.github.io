@@ -44,4 +44,17 @@ class API {
                 username: userId
             });
     }
+
+    static isMeseConsolidato = (authToken, userId, idCompany, anno, mese) => {
+        return HttpRequest
+            .post()
+            .url(Constants.ENDPOINT_IS_MESE_CONSOLIDATO)
+            .addHeader('Authorization', authToken)
+            .body({
+                username: userId,
+                idCompany,
+                anno,
+                mese
+            });
+    }
 }

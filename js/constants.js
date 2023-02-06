@@ -3,6 +3,7 @@ class Constants {
     static ENDPOINT_GET_COMMESSE = 'https://intranet.majorbit.com/ms/timesheet/timesheet/getCommesse';
     static ENDPOINT_TIMBRO_ANOMALO = 'https://intranet.majorbit.com/ms/timesheet/timesheet/timbro_anomalo';
     static ENDPOINT_TIMBRATURE = 'https://intranet.majorbit.com/ms/timesheet/timesheet/timbrature';
+    static ENDPOINT_IS_MESE_CONSOLIDATO = 'https://intranet.majorbit.com/ms/timesheet/timesheet/is_mese_consolidato';
     static EMAIL_DOMAIN = '@majorbit.com';
     static APP_DEVELOPER = 'Leonardo Baioni';
     static APP_VERSION = '0.0.2';

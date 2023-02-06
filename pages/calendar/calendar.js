@@ -1,4 +1,4 @@
-let authToken, userId, idCompany, actualYear, timbrature, commesse = [], giorniSelezionati = [], giorniDaConsuntivare = [], calendarValues = [];
+let authToken, userId, idCompany, actualYear, timbrature, isMeseConsolidato, commesse = [], giorniSelezionati = [], giorniDaConsuntivare = [], calendarValues = [];
 
 // On DOM loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -50,6 +50,7 @@ const onChooseMonth = () => {
     cleanAfterMonthChange();
     getTimbrature();
     getCommesse();
+    setMeseConsolidato();
 }
 
 const getSelectedMonthYear = () => actualYear - (getSelectedMonth() === '12' ? 1 : 0);
@@ -390,4 +391,17 @@ const getTimbratureElaborate = (timbrature) => {
     });
 
     return obj;
+}
+
+const setMeseConsolidato = () => {
+    // Effettuo la richiesta sull'API di CyberGuide
+    API.isMeseConsolidato(authToken, userId, idCompany, getSelectedMonthYear(), Number(getSelectedMonth()))
+        .onSuccess((response) => {
+            isMeseConsolidato = response;
+            FormUtil.getElement('month-status').innerHTML = response ? 'Consolidato' : 'Non Consolidato';
+        })
+        .onError((response) => {
+            ToastService.showErrorMessage('Errore durante il recupero dello stato del mese. Contattare l\'amministratore');
+        })
+        .send();
 }
