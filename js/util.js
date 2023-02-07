@@ -3,6 +3,7 @@ class Util {
     static clone = (obj) => JSON.parse(JSON.stringify(obj));
     static isProdMode = () => !window.location.href.startsWith('file://');
     static getLocalBasePath = () => window.location.href.split('/').slice(0, -1).join('/');
+    static padZero = (n) => (n < 10 ? ('0' + n) : n);
 }
 
 class SessionStorageUtil {
@@ -22,8 +23,7 @@ class Arrays {
 class DateUtil {
     static formatDate = (date) => (date instanceof Date) ? date.toISOString().split('T')[0] : 'Invalid Date';
     static formatDateTime = (date) => (date instanceof Date) ? (date.toISOString().split('T')[0] + ' ' + DateUtil.formatTime(date) + ':00') : 'Invalid Date';
-    static formatTime = (date) => DateUtil.padTime(date.getHours()) + ':' + DateUtil.padTime(date.getMinutes());
-    static padTime = (time) => (time < 10 ? ('0' + time.toString()) : time.toString());
+    static formatTime = (date) => Util.padZero(date.getHours()) + ':' + Util.padZero(date.getMinutes());
 }
 
 class FormUtil {
@@ -34,6 +34,8 @@ class FormUtil {
     static setFormAction = (formId, fn) => document.getElementById(formId).onsubmit = (event) => { event.preventDefault(); console.log(fn); fn.call(); };
     static hideElement = (id) => document.getElementById(id).classList.add('hidden');
     static showElement = (id) => document.getElementById(id).classList.remove('hidden');
+    static hideElementByOpacity = (id) => document.getElementById(id).classList.add('not-visible');
+    static showElementByOpacity = (id) => document.getElementById(id).classList.remove('not-visible');
     static preventReloading = () => false;
 }
 

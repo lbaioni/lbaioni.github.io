@@ -164,6 +164,7 @@ const buildCalendar = () => {
         calendarValue.cellID = cellID;
         cell.classList.remove('out-day');
         cell.classList.remove('working-day');
+        cell.classList.remove('over-today');
         FormUtil.getElement(cellID + '-day').innerHTML = calendarValue.day;
         const totOreLavorate = timbrature[calendarValue.day] ? timbrature[calendarValue.day].total / 60 : 0;
         if (totOreLavorate && !calendarValue.disabled) { FormUtil.getElement(cellID + '-desc').innerHTML = (totOreLavorate + (totOreLavorate === 1 ? ' ORA' : ' ORE')); }
@@ -363,6 +364,46 @@ class TimbraturaElaborata {
         this.uscita = uscita;
     }
     isFullFilled = () => this.entrata && this.uscita;
+}
+
+const _buildTimbraturaStr = t => t.entrata + ' - ' + t.uscita;
+
+const showTimbratureGiorno = d => {
+    const timbratureGiorno = timbrature[d].times
+        .map(t => _buildTimbraturaStr(t))
+        .sort((a, b) => a.localeCompare(b));
+
+    if (!Arrays.isEmpty(timbratureGiorno)) {
+        // Pulisco il contenuto del toast con il dettaglio
+        const container = FormUtil.getElement('day-detail');
+        container.innerHTML = '';
+
+        // Aggiungo una label
+        const label = document.createElement('span');
+        label.classList.add('label');
+        label.innerText = 'Timbrature presenti: ';
+        container.appendChild(label);
+
+        // Aggiungo uno span con le timbrature presenti
+        const record = document.createElement('span');
+        record.innerText = timbratureGiorno.join(' | ');
+        container.appendChild(record);
+
+        // Rendo visibile il toast
+        FormUtil.showElementByOpacity('day-detail');
+    }
+}
+
+let timeoutMouseOver = {};
+
+function handleCellMouseEnter(cellID) {
+    const day = FormUtil.getElement('cal-cell-' + cellID).children[0].innerHTML;
+    timeoutMouseOver[cellID] = setTimeout(() => showTimbratureGiorno(day), 2000);
+}
+
+function handleCellMouseLeave(cellID) {
+    clearTimeout(timeoutMouseOver[cellID]);
+    FormUtil.hideElementByOpacity('day-detail');
 }
 
 const getTimbratureElaborate = (timbrature) => {

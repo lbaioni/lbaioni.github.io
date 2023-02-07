@@ -57,6 +57,10 @@ button {
     display: none;
 }
 
+.not-visible {
+    opacity: 0;
+}
+
 .bg-black {
     background-color: #353535;
 }
@@ -132,4 +136,21 @@ button {
 .toast.info {
     background: #686868;
     color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

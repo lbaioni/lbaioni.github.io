@@ -2,7 +2,7 @@ div.calendar-box {
     width: 24rem;
     padding: 2rem;
     position: absolute;
-    top: 20%;
+    top: 4rem;
     left: 50%;
     margin-left: -24.5rem;
     border-radius: 0.2rem;
@@ -13,7 +13,7 @@ div.info-box {
     width: 16rem;
     padding: 2rem;
     position: absolute;
-    top: 20%;
+    top: 4rem;
     left: 50%;
     margin-left: 4.5rem;
     border-radius: 0.2rem;
@@ -160,6 +160,26 @@ div.label-for-field#month-status {
     color: #a31b1b;
     font-weight: bold;
     cursor: default;
+}
+
+div.day-detail {
+    min-width: 24rem;
+    border-radius: .6rem .2rem .6rem .2rem;
+    width: fit-content;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+    margin-left: -12rem;
+    padding: .5rem 2rem;
+    color: #f4f4f4;
+    font-weight: 600;
+    font-family: monospace;
+    transition: 1s;
+}
+
+div.day-detail span.label {
+    color: #a90000;
 }
 
 /* Toggle Button */
