@@ -169,9 +169,13 @@ const buildCalendar = () => {
         const totOreLavorate = timbrature[calendarValue.day] ? timbrature[calendarValue.day].total / 60 : 0;
         if (totOreLavorate && !calendarValue.disabled) { FormUtil.getElement(cellID + '-desc').innerHTML = (totOreLavorate + (totOreLavorate === 1 ? ' ORA' : ' ORE')); }
         cell.onclick = () => onClickCell(cellID, calendarValue.day);
+        cell.onmouseenter = () => _handleCellMouseEnter(cellID, calendarValue.day);
+        cell.onmouseleave = () => _handleCellMouseLeave(cellID);
         if (calendarValue.disabled) {
             cell.classList.add('out-day');
             cell.onclick = null;
+            cell.onmouseenter = null;
+            cell.onmouseleave = null;
         } else if (!calendarValue.workingDay) {
             cell.classList.add('not-working-day');
         } else {
@@ -180,6 +184,8 @@ const buildCalendar = () => {
         if (!calendarValue.disabled && calendarValue.overToday) {
             cell.classList.add('over-today');
             cell.onclick = null;
+            cell.onmouseenter = null;
+            cell.onmouseleave = null;
         }
     });
 
@@ -396,12 +402,12 @@ const showTimbratureGiorno = d => {
 
 let timeoutMouseOver = {};
 
-function handleCellMouseEnter(cellID) {
+const _handleCellMouseEnter = (cellID, d) => {
     const day = FormUtil.getElement('cal-cell-' + cellID).children[0].innerHTML;
     timeoutMouseOver[cellID] = setTimeout(() => showTimbratureGiorno(day), 2000);
 }
 
-function handleCellMouseLeave(cellID) {
+const _handleCellMouseLeave = cellID => {
     clearTimeout(timeoutMouseOver[cellID]);
     FormUtil.hideElementByOpacity('day-detail');
 }
